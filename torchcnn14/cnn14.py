@@ -93,10 +93,13 @@ class Cnn14(nn.Module):
         super(Cnn14, self).__init__()
         if sample_rate == 16000:
             state_dict = hub.load_state_dict_from_url(urls['cnn14_16k'], progress=True)
+
         elif sample_rate == 32000:
             state_dict = hub.load_state_dict_from_url(urls['cnn14_32k'], progress=True)
         else:
             raise Exception("We only support sample rate of 16000 or 32000!")
+
+        super().load_state_dict(state_dict)
 
         if device is None:
             device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -155,14 +158,6 @@ class Cnn14(nn.Module):
 
         self.fc1 = nn.Linear(2048, 2048, bias=True)
         self.fc_audioset = nn.Linear(2048, classes_num, bias=True)
-
-        # self.init_weight()
-        if sample_rate == 16000:
-            state_dict = torch.load("./temp_data/Cnn14_16k_mAP=0.438.pth")
-            self.load_state_dict(state_dict["model"])
-        elif sample_rate == 32000:
-            state_dict = torch.load("./temp_data/Cnn14_mAP=0.431.pth")
-            self.load_state_dict(state_dict["model"])
 
     def init_weight(self):
         init_bn(self.bn0)
