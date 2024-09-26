@@ -99,7 +99,7 @@ class Cnn14(nn.Module):
         else:
             raise Exception("We only support sample rate of 16000 or 32000!")
 
-        super().load_state_dict(state_dict["model"])
+        self.load_state_dict(state_dict["model"])
 
         if device is None:
             device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
