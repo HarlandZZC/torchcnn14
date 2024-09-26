@@ -157,8 +157,8 @@ class Cnn14(nn.Module):
 
         if device is None:
             device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-            self.device = device
-            self = self.to(self.device)
+        self.device = device
+        self = self.to(self.device)
 
     def init_weight(self):
         init_bn(self.bn0)
