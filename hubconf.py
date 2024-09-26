@@ -9,6 +9,6 @@ model_urls = {
            'releases/download/v0.1/cnn14_32k.pth'
 }
 
-def Cnn14(**kwargs):
+def cnn14(**kwargs):
     model = Cnn14(urls=model_urls, **kwargs)
     return model
