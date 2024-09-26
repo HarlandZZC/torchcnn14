@@ -9,6 +9,6 @@ model_urls = {
            'releases/download/v0.1/cnn14_32k.pth'
 }
 
-def vggish(**kwargs):
+def cnn14(**kwargs):
     model = cnn14(urls=model_urls, **kwargs)
     return model
