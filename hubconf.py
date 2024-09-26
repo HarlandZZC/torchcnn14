@@ -1,6 +1,6 @@
 dependencies = ['torch', 'numpy', 'resampy', 'soundfile']
 
-from torchcnn14.cnn14 import cnn14
+from torchcnn14.cnn14 import Cnn14
 
 model_urls = {
     'cnn14_16k': 'https://github.com/HarlandZZC/torchcnn14/'
@@ -9,6 +9,6 @@ model_urls = {
            'releases/download/v0.1/cnn14_32k.pth'
 }
 
-def cnn14(**kwargs):
-    model = cnn14(urls=model_urls, **kwargs)
+def Cnn14(**kwargs):
+    model = Cnn14(urls=model_urls, **kwargs)
     return model

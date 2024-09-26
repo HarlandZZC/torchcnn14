@@ -88,9 +88,9 @@ class ConvBlock(nn.Module):
 
         return x
 
-class cnn14(nn.Module):
+class Cnn14(nn.Module):
     def __init__(self, urls, device, features_list, sample_rate, window_size, hop_size, mel_bins, fmin, fmax, classes_num,):
-        super(cnn14, self).__init__()
+        super(Cnn14, self).__init__()
         if sample_rate == 16000:
             state_dict = hub.load_state_dict_from_url(urls['cnn14_16k'], progress=True)
         elif sample_rate == 32000:
