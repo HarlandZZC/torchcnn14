@@ -91,11 +91,6 @@ class ConvBlock(nn.Module):
 class Cnn14(nn.Module):
     def __init__(self, urls, device, features_list, sample_rate, window_size, hop_size, mel_bins, fmin, fmax, classes_num,):
         super(Cnn14, self).__init__()
-
-        if device is None:
-            device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        self.device = device
-        self = self.to(self.device)
         
         window = "hann"
         center = True
@@ -159,6 +154,11 @@ class Cnn14(nn.Module):
             raise Exception("We only support sample rate of 16000 or 32000!")
 
         self.load_state_dict(state_dict["model"])
+
+        if device is None:
+            device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+            self.device = device
+            self = self.to(self.device)
 
     def init_weight(self):
         init_bn(self.bn0)
