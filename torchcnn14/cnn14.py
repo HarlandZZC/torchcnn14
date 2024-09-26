@@ -95,7 +95,7 @@ class Cnn14(nn.Module):
         if device is None:
             device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.device = device
-        self.to(self.device)
+        self = self.to(self.device)
         
         window = "hann"
         center = True
